@@ -98,6 +98,8 @@ provider.ready.then(async (network) => {
     console.log('Waiting tx confirmation...');
     await tx.wait(2);
     console.log('Transaction confirmed, eth_unsubscribe should automatically happen soon.');
+    contract.removeAllListeners();
+    console.log('Removing subscriptions for contract');
     await delay(5000); // just waiting for 5 seconds;
     console.log('Probably everything is fine');
 }).catch((e) => {
